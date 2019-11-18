@@ -24,4 +24,8 @@ export default defineMessages({
     id: `${scope}.profile`,
     defaultMessage: 'Profile',
   },
+  news: {
+    id: `${scope}.news`,
+    defaultMessage: 'News',
+  },
 });

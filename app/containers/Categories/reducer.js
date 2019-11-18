@@ -6,6 +6,9 @@
 import { fromJS } from 'immutable';
 import produce from 'immer';
 import {
+  GET_INFO,
+  GET_INFO_SUCCESS,
+  GET_INFO_ERROR,
   GET_CATEGORIES,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_ERROR,
@@ -13,6 +16,9 @@ import {
 
 // export const initialState = {};
 const initialState = fromJS({
+  infoPending: false,
+  infoError: null,
+  infoData: null,
   pending: false,
   error: null,
   data: null,
@@ -22,6 +28,15 @@ const initialState = fromJS({
 const categoriesReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
+      case GET_INFO:
+        return state.set('infoError', null).set('infoPending', true);
+
+      case GET_INFO_SUCCESS:
+        return state.set('infoPending', false).set('infoData', action.payload);
+
+      case GET_INFO_ERROR:
+        return state.set('infoPending', false).set('infoError', action.err);
+
       case GET_CATEGORIES:
         return state.set('error', null).set('pending', true);
 
