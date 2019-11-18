@@ -13,6 +13,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
+import CategoryPage from 'containers/CategoryPage/Loadable';
+import PostPage from 'containers/PostPage/Loadable';
 import AuthPage from 'containers/AuthPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { ProtectedRoute } from 'containers/ProtectedRoute';
@@ -44,6 +46,8 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <ProtectedRoute path="/features" component={FeaturePage} />
         <Route path="/auth" component={AuthPage} />
+        <Route path="/news" component={CategoryPage} />
+        <Route path="/categories/:id" component={PostPage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />

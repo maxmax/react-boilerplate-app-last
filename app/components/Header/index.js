@@ -7,7 +7,7 @@ import A from './A';
 import Img from './Img';
 import NavBar from './NavBar';
 import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
+import Banner from './banner.png';
 import messages from './messages';
 
 const Wrapper = styled.div`
@@ -31,6 +31,9 @@ function Header({ authorized, logout }) {
         </HeaderLink>
         <HeaderLink to="/features">
           <FormattedMessage {...messages.features} />
+        </HeaderLink>
+        <HeaderLink to="/news">
+          <FormattedMessage {...messages.news} />
         </HeaderLink>
         {!authorized && (
           <HeaderLink to="/auth">

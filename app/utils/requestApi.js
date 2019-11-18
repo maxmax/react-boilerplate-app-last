@@ -14,7 +14,31 @@ function parseJSON(response) {
   if (response.status === 204 || response.status === 205) {
     return null;
   }
+
+  if (response.postsTotal) {
+    return response.json().then(json => {
+      const data = {
+        posts: json,
+        postsTotal: Number(response.postsTotal),
+      };
+      return data;
+    });
+  }
+
   return response.json();
+}
+
+/**
+ * Checks if a Headers
+ */
+
+function checkHeader(response) {
+  // check authorization
+  if (response.headers.get('authorization')) {
+    console.log('authorization!');
+  }
+
+  return response;
 }
 
 /**
@@ -49,5 +73,6 @@ export default function request(url, options) {
 
   return fetch(requestUrl, requestOptions)
     .then(checkStatus)
+    .then(checkHeader)
     .then(parseJSON);
 }

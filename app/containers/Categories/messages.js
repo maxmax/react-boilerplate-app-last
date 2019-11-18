@@ -11,6 +11,6 @@ export const scope = 'app.containers.Categories';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the Categories container!',
+    defaultMessage: 'Categories/',
   },
 });

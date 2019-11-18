@@ -67,7 +67,7 @@ export function AuthPage({
       {sendAuthError && sendAuthError.statusText && !sendPending && (
         <AlertMessage color="danger">{sendAuthError.statusText}</AlertMessage>
       )}
-      {!makeSelectClient && state.view && (
+      {!makeSelectClient && !state.view && (
         <GroupStyled>
           <H2>
             <FormattedMessage {...messages.header} />
@@ -89,7 +89,7 @@ export function AuthPage({
           </Button>
         </GroupStyled>
       )}
-      {!makeSelectClient && !state.view && (
+      {!makeSelectClient && state.view && (
         <GroupStyled>
           <H2>Sign up</H2>
           <Form onSubmit={onSubmitFormSignUp}>

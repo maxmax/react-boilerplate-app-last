@@ -1,8 +1,5 @@
 const TOKEN_KEY = 'token';
 const USER_INFO = 'userInfo';
-const COMPANY_INFO = 'companyInfo';
-const USER_LOCATION = 'userLocation';
-const USER_STATUS = 'userStatus';
 const { parse } = JSON;
 
 export const currentUser = {

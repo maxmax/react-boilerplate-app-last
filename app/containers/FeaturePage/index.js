@@ -7,7 +7,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
-import Categories from 'containers/Categories';
+// import Categories from 'containers/Categories';
 import FakeCool from 'containers/FakeCool';
 // Import the Map component
 // const Map = React.lazy(() => import('./Map'));
@@ -77,8 +77,6 @@ export default function FeaturePage() {
             <FormattedMessage {...messages.intlMessage} />
           </p>
         </ListItem>
-        <hr />
-        <Categories />
         <hr />
       </List>
     </div>
