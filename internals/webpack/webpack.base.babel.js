@@ -120,6 +120,8 @@ module.exports = options => ({
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         API_URL: JSON.stringify(process.env.API_URL),
         API_BE_URL: JSON.stringify(process.env.API_BE_URL),
+        SUBSCRIBE_API: JSON.stringify(process.env.SUBSCRIBE_API),
+        PUBLIC_KEY: JSON.stringify(process.env.PUBLIC_KEY),
         // API_STATIC_URL: JSON.stringify(process.env.API_STATIC_URL),
         // API_STATIC_TOKEN: JSON.stringify(process.env.API_STATIC_TOKEN),
       },

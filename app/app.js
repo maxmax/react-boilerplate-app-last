@@ -11,10 +11,12 @@ import '@babel/polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import runtime from 'offline-plugin/runtime';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
+import subscribeToNotifications from 'utils/subscribeToNotifications';
 // ProtectedAuthorization
 import { checkProtectedAuthorization } from 'utils/authService';
 import 'sanitize.css/sanitize.css';
@@ -97,5 +99,28 @@ if (!window.Intl) {
 // it's not most important operation and if main code fails,
 // we do not want it installed
 if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+  // require('offline-plugin/runtime').install(); // eslint-disable-line global-require
+  // OfflinePluginRuntime.install();
+  // https://github.com/NekR/offline-plugin/blob/master/docs/updates.md
+  // runtime.install({
+  //  onUpdating: () => {
+  //    console.log('SW Event:', 'onUpdating');
+  //  },
+  //  onUpdateReady: () => {
+  //    console.log('SW Event:', 'onUpdateReady');
+  //    console.log('SW Event:', 'onUpdateReady', runtime);
+  //    // Tells to new SW to take control immediately
+  //    runtime.applyUpdate();
+  //  },
+  //  onUpdated: () => {
+  //    console.log('SW Event:', 'onUpdated');
+  //    // Reload the webpage to load into the new version
+  //    window.location.reload();
+  //  },
+  //  onUpdateFailed: () => {
+  //    console.log('SW Event:', 'onUpdateFailed');
+  //  }
+  //});
+  runtime.install();
+  subscribeToNotifications();
 }

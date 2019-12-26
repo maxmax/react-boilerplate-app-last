@@ -18,8 +18,11 @@ module.exports = require('./webpack.base.babel')({
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    // filename: '[name].[chunkhash].js',
+    // chunkFilename: '[name].[chunkhash].chunk.js',
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
+    // path: path.resolve(process.cwd(), 'build/js'),
   },
 
   optimization: {
@@ -106,6 +109,16 @@ module.exports = require('./webpack.base.babel')({
 
       // Removes warning for about `additional` section usage
       safeToUseOptionalCaches: true,
+
+      // AppCache
+      // AppCache: { events: true },
+
+      // sw events
+      ServiceWorker: {
+        events: true,
+        entry: path.join(process.cwd(), 'app/sw.js'),
+        output: 'sw.js',
+      },
     }),
 
     new CompressionPlugin({
